@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Define the home page
+  root "places#index"  # same as: get("/", { controller: "places", action: "index" })
 
-  # Defines the root path route ("/")
-  # get("/", { :controller => "articles", :action => "index" })
+  # Places resource
+  resources :places
+
+  # Entries (keep these manually since you're not using full REST for them yet)
+  get("/entries/new", { :controller => "entries", :action => "new" })
+  post("/entries", { :controller => "entries", :action => "create" })
 end
+
